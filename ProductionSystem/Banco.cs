@@ -50,12 +50,13 @@ namespace ProductionSystem
                     "modelo char(20), " +
                     "cor char(20), " +
                     "altura char(03), " +
-                    "largura char(03))" +
-                    "modelo_alca char(20))", Conexao);
+                    "largura char(03), " +
+                    "modelo_alca char(20), " +
+                    "foto varchar(100))", Conexao);
                 Comando.ExecuteNonQuery();
 
 
-                Conexao.Close();
+                FecharConexao();
             }
             catch (Exception e)
             {
