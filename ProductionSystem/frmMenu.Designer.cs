@@ -29,8 +29,13 @@ namespace ProductionSystem
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tabControl = new TabControl();
             tabEstoque = new TabPage();
+            dgvEstoque = new DataGridView();
+            excluir = new DataGridViewImageColumn();
+            btnSalvar = new Button();
+            btnCancelar = new Button();
             btnFechar = new Button();
             btnAdicionar = new Button();
             grbEstoque = new GroupBox();
@@ -54,15 +59,16 @@ namespace ProductionSystem
             picEstoque = new PictureBox();
             txtPesquisa = new TextBox();
             label1 = new Label();
-            dgvEstoque = new DataGridView();
             tabPage2 = new TabPage();
             tabEstoqueTNT = new TabPage();
             tabRendimento = new TabPage();
+            ofdEstoque = new OpenFileDialog();
+            timer = new System.Windows.Forms.Timer(components);
             tabControl.SuspendLayout();
             tabEstoque.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
             grbEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picEstoque).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
             SuspendLayout();
             // 
             // tabControl
@@ -82,12 +88,14 @@ namespace ProductionSystem
             // 
             // tabEstoque
             // 
+            tabEstoque.Controls.Add(dgvEstoque);
+            tabEstoque.Controls.Add(btnSalvar);
+            tabEstoque.Controls.Add(btnCancelar);
             tabEstoque.Controls.Add(btnFechar);
             tabEstoque.Controls.Add(btnAdicionar);
             tabEstoque.Controls.Add(grbEstoque);
             tabEstoque.Controls.Add(txtPesquisa);
             tabEstoque.Controls.Add(label1);
-            tabEstoque.Controls.Add(dgvEstoque);
             tabEstoque.Location = new Point(4, 30);
             tabEstoque.Name = "tabEstoque";
             tabEstoque.Padding = new Padding(3);
@@ -95,6 +103,52 @@ namespace ProductionSystem
             tabEstoque.TabIndex = 0;
             tabEstoque.Text = "Estoque";
             tabEstoque.UseVisualStyleBackColor = true;
+            // 
+            // dgvEstoque
+            // 
+            dgvEstoque.AllowUserToAddRows = false;
+            dgvEstoque.AllowUserToDeleteRows = false;
+            dgvEstoque.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEstoque.Columns.AddRange(new DataGridViewColumn[] { excluir });
+            dgvEstoque.Location = new Point(8, 58);
+            dgvEstoque.Name = "dgvEstoque";
+            dgvEstoque.ReadOnly = true;
+            dgvEstoque.Size = new Size(520, 407);
+            dgvEstoque.TabIndex = 10;
+            dgvEstoque.CellClick += dgvEstoque_CellClick;
+            dgvEstoque.CellContentClick += dgvEstoque_CellContentClick;
+            dgvEstoque.CellFormatting += dgvEstoque_CellFormatting;
+            dgvEstoque.DataBindingComplete += dgvEstoque_DataBindingComplete;
+            // 
+            // excluir
+            // 
+            excluir.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            excluir.FillWeight = 50F;
+            excluir.HeaderText = "";
+            excluir.Image = Properties.Resources.delete;
+            excluir.Name = "excluir";
+            excluir.ReadOnly = true;
+            excluir.Width = 5;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Location = new Point(737, 468);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(98, 58);
+            btnSalvar.TabIndex = 7;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(636, 468);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(98, 58);
+            btnCancelar.TabIndex = 6;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnFechar
             // 
@@ -113,6 +167,7 @@ namespace ProductionSystem
             btnAdicionar.TabIndex = 4;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // grbEstoque
             // 
@@ -149,6 +204,7 @@ namespace ProductionSystem
             btnDecremento.Size = new Size(65, 59);
             btnDecremento.TabIndex = 35;
             btnDecremento.UseVisualStyleBackColor = true;
+            btnDecremento.Click += btnDecremento_Click;
             // 
             // btnIncremento
             // 
@@ -158,6 +214,7 @@ namespace ProductionSystem
             btnIncremento.Size = new Size(65, 59);
             btnIncremento.TabIndex = 34;
             btnIncremento.UseVisualStyleBackColor = true;
+            btnIncremento.Click += btnIncremento_Click;
             // 
             // label9
             // 
@@ -221,7 +278,9 @@ namespace ProductionSystem
             // 
             // cboAlca
             // 
+            cboAlca.DropDownStyle = ComboBoxStyle.DropDownList;
             cboAlca.FormattingEnabled = true;
+            cboAlca.Items.AddRange(new object[] { "Sem", "Alça", "Cordão" });
             cboAlca.Location = new Point(173, 275);
             cboAlca.Name = "cboAlca";
             cboAlca.Size = new Size(102, 29);
@@ -256,11 +315,14 @@ namespace ProductionSystem
             // 
             // cboModelo
             // 
+            cboModelo.DropDownStyle = ComboBoxStyle.DropDownList;
             cboModelo.FormattingEnabled = true;
+            cboModelo.Items.AddRange(new object[] { "Sem visor", "Com visor" });
             cboModelo.Location = new Point(173, 222);
             cboModelo.Name = "cboModelo";
             cboModelo.Size = new Size(102, 29);
             cboModelo.TabIndex = 22;
+            cboModelo.SelectedIndexChanged += cboModelo_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -294,8 +356,10 @@ namespace ProductionSystem
             picEstoque.Location = new Point(82, 40);
             picEstoque.Name = "picEstoque";
             picEstoque.Size = new Size(147, 146);
+            picEstoque.SizeMode = PictureBoxSizeMode.StretchImage;
             picEstoque.TabIndex = 18;
             picEstoque.TabStop = false;
+            picEstoque.Click += picEstoque_Click;
             // 
             // txtPesquisa
             // 
@@ -313,17 +377,6 @@ namespace ProductionSystem
             label1.Size = new Size(123, 19);
             label1.TabIndex = 1;
             label1.Text = "Pesquisar produto:";
-            // 
-            // dgvEstoque
-            // 
-            dgvEstoque.AllowUserToAddRows = false;
-            dgvEstoque.AllowUserToDeleteRows = false;
-            dgvEstoque.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEstoque.Location = new Point(6, 58);
-            dgvEstoque.Name = "dgvEstoque";
-            dgvEstoque.ReadOnly = true;
-            dgvEstoque.Size = new Size(522, 407);
-            dgvEstoque.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -355,13 +408,24 @@ namespace ProductionSystem
             tabRendimento.Text = "Rendimento";
             tabRendimento.UseVisualStyleBackColor = true;
             // 
+            // ofdEstoque
+            // 
+            ofdEstoque.FileName = "openFileDialog1";
+            // 
+            // timer
+            // 
+            timer.Enabled = true;
+            timer.Interval = 5000;
+            timer.Tick += timer_Tick;
+            // 
             // frmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(851, 568);
-            ControlBox = false;
             Controls.Add(tabControl);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "frmMenu";
             Text = "Controle de Produção";
             WindowState = FormWindowState.Maximized;
@@ -369,10 +433,10 @@ namespace ProductionSystem
             tabControl.ResumeLayout(false);
             tabEstoque.ResumeLayout(false);
             tabEstoque.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEstoque).EndInit();
             grbEstoque.ResumeLayout(false);
             grbEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picEstoque).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEstoque).EndInit();
             ResumeLayout(false);
         }
 
@@ -383,7 +447,6 @@ namespace ProductionSystem
         private TabPage tabPage2;
         private TabPage tabEstoqueTNT;
         private TabPage tabRendimento;
-        private DataGridView dgvEstoque;
         private GroupBox grbEstoque;
         private TextBox txtPesquisa;
         private Label label1;
@@ -407,5 +470,11 @@ namespace ProductionSystem
         private Button btnFechar;
         private Button btnDecremento;
         private Button btnIncremento;
+        private Button btnCancelar;
+        private Button btnSalvar;
+        private OpenFileDialog ofdEstoque;
+        private System.Windows.Forms.Timer timer;
+        private DataGridView dgvEstoque;
+        private DataGridViewImageColumn excluir;
     }
 }
