@@ -171,7 +171,6 @@ namespace ProductionSystem
             // 
             // grbEstoque
             // 
-            grbEstoque.AutoSize = true;
             grbEstoque.Controls.Add(btnDecremento);
             grbEstoque.Controls.Add(btnIncremento);
             grbEstoque.Controls.Add(label9);
@@ -192,7 +191,7 @@ namespace ProductionSystem
             grbEstoque.Controls.Add(picEstoque);
             grbEstoque.Location = new Point(534, 12);
             grbEstoque.Name = "grbEstoque";
-            grbEstoque.Size = new Size(305, 453);
+            grbEstoque.Size = new Size(301, 451);
             grbEstoque.TabIndex = 3;
             grbEstoque.TabStop = false;
             // 
@@ -422,7 +421,6 @@ namespace ProductionSystem
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             ClientSize = new Size(851, 568);
             Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedSingle;
