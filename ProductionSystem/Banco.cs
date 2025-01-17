@@ -48,11 +48,12 @@ namespace ProductionSystem
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS estoque " +
                     "(id integer auto_increment primary key," +
                     "modelo char(20), " +
+                    "silk char(08), " +
                     "cor char(20), " +
                     "altura char(03), " +
                     "largura char(03), " +
                     "modelo_alca char(20), " +
-                    "quantidade char(8), " +
+                    "quantidade char(08), " +
                     "foto varchar(100))", Conexao);
                 Comando.ExecuteNonQuery();
 

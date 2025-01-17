@@ -16,7 +16,6 @@ namespace ProductionSystem
             inicio();
             txtID.Enabled = false;
             dgvEstoque.Columns["id"].Visible = false;
-            timer.Start();
         }
 
         public frmMenu()
@@ -27,6 +26,7 @@ namespace ProductionSystem
         void inicio()
         {
             cboModelo.Enabled = false;
+            txtSilk.Enabled = false;
             txtCor.Enabled = false;
             cboAlca.Enabled = false;
             txtAltura.Enabled = false;
@@ -55,7 +55,9 @@ namespace ProductionSystem
 
         public void limpaControles()
         {
+            txtID.Clear();
             cboModelo.SelectedIndex = -1;
+            txtSilk.Clear();
             txtCor.Clear();
             txtAltura.Clear();
             txtLargura.Clear();
@@ -80,6 +82,7 @@ namespace ProductionSystem
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             cboModelo.Enabled = true;
+            txtSilk.Enabled = true;
             txtCor.Enabled = true;
             cboAlca.Enabled = true;
             txtAltura.Enabled = true;
@@ -91,16 +94,18 @@ namespace ProductionSystem
             btnCancelar.Visible = true;
             btnIncremento.Visible = false;
             btnDecremento.Visible = false;
+            limpaControles();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            limpaControles();
             inicio();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (picEstoque.ImageLocation == "" || cboModelo.TabIndex == -1 || txtCor.Text == "" ||
+            if (cboModelo.TabIndex == -1 || txtCor.Text == "" ||
                 cboAlca.TabIndex == -1 || txtAltura.Text == "" || txtLargura.Text == "" || txtQuantidade.Text == "")
             {
                 MessageBox.Show("Preencha todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -110,6 +115,7 @@ namespace ProductionSystem
                 es = new Estoque()
                 {
                     modelo = cboModelo.Text,
+                    silk = txtSilk.Text,
                     cor = txtCor.Text,
                     altura = txtAltura.Text,
                     largura = txtLargura.Text,
@@ -152,16 +158,12 @@ namespace ProductionSystem
             form.Show();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            atualizarGrid();
-            timer.Start();
-        }
 
         private void dgvEstoque_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
 
             dgvEstoque.Columns["modelo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvEstoque.Columns["silk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["cor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["modelo_alca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["altura"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -173,11 +175,15 @@ namespace ProductionSystem
                 switch (coluna.Name)
                 {
                     case "modelo":
-                        coluna.Width = 90;
+                        coluna.Width = 140;
                         coluna.HeaderText = "Modelo";
                         break;
+                    case "silk":
+                        coluna.Width = 140;
+                        coluna.HeaderText = "Silk";
+                        break;
                     case "cor":
-                        coluna.Width = 90;
+                        coluna.Width = 120;
                         coluna.HeaderText = "Cor";
                         break;
                     case "altura":
@@ -189,20 +195,20 @@ namespace ProductionSystem
                         coluna.HeaderText = "Largura";
                         break;
                     case "modelo_alca":
-                        coluna.Width = 75;
+                        coluna.Width = 100;
                         coluna.HeaderText = "Alça";
                         break;
                     case "quantidade":
-                        coluna.Width = 100;
+                        coluna.Width = 130;
                         coluna.HeaderText = "Quantidade";
                         break;
                     case "foto":
-                        coluna.Width = 100;
+                        coluna.Width = 385;
                         coluna.HeaderText = "Imagem";
                         break;
                     case "excluir":
                         coluna.Width = 60;
-                        coluna.DisplayIndex = 8;
+                        coluna.DisplayIndex = 9;
                         coluna.HeaderText = "Excluir";
                         break;
                     default:
@@ -218,6 +224,7 @@ namespace ProductionSystem
             {
                 txtID.Text = dgvEstoque.CurrentRow.Cells["id"].Value.ToString();
                 cboModelo.Text = dgvEstoque.CurrentRow.Cells["modelo"].Value.ToString();
+                txtSilk.Text = dgvEstoque.CurrentRow.Cells["silk"].Value.ToString();
                 txtCor.Text = dgvEstoque.CurrentRow.Cells["cor"].Value.ToString();
                 txtAltura.Text = dgvEstoque.CurrentRow.Cells["altura"].Value.ToString();
                 txtLargura.Text = dgvEstoque.CurrentRow.Cells["largura"].Value.ToString();
@@ -252,6 +259,30 @@ namespace ProductionSystem
                     dgvEstoque.Refresh();
                 }
             }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            es.Consultar();
+        }
+
+        private void txtCor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            es = new Estoque()
+            {
+                modelo = txtPesquisa.Text
+            };
+            dgvEstoque.DataSource = es.Consultar();
         }
     }
 }

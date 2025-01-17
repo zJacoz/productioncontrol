@@ -38,6 +38,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
             label2.Location = new Point(74, 77);
@@ -68,6 +69,7 @@
             // 
             // txtDec
             // 
+            txtDec.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtDec.Location = new Point(68, 51);
             txtDec.Name = "txtDec";
             txtDec.Size = new Size(100, 23);
@@ -76,6 +78,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
             label1.Location = new Point(35, 29);
@@ -86,6 +89,7 @@
             // 
             // lblQtde
             // 
+            lblQtde.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblQtde.AutoSize = true;
             lblQtde.Font = new Font("Segoe UI", 10F);
             lblQtde.Location = new Point(112, 77);
@@ -104,7 +108,11 @@
             Controls.Add(btnConfirmar);
             Controls.Add(txtDec);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "frmDec";
+            ShowIcon = false;
+            SizeGripStyle = SizeGripStyle.Hide;
+            StartPosition = FormStartPosition.CenterScreen;
             Load += frmDec_Load;
             ResumeLayout(false);
             PerformLayout();

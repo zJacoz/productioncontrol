@@ -104,7 +104,10 @@
             Controls.Add(btnConfirmar);
             Controls.Add(txtInc);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "frmInc";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Load += frmInc_Load;
             ResumeLayout(false);
             PerformLayout();

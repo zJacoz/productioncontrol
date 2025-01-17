@@ -9,6 +9,7 @@ namespace ProductionSystem.Models
     {
         public int id { get; set; }
         public string modelo { get; set; }
+        public string silk { get; set; }
         public string cor { get; set; }
         public string altura { get; set; }
         public string largura { get; set; }
@@ -21,9 +22,10 @@ namespace ProductionSystem.Models
             try
             {
                 Banco.Conexao.Open();
-                Banco.Comando = new MySqlCommand("INSERT INTO estoque (modelo, cor, altura, largura, modelo_alca, foto, quantidade) " +
-                    "VALUES (@modelo, @cor, @altura, @largura, @modelo_alca, @foto, @quantidade)", Banco.Conexao);
+                Banco.Comando = new MySqlCommand("INSERT INTO estoque (modelo, silk, cor, altura, largura, modelo_alca, foto, quantidade) " +
+                    "VALUES (@modelo, @silk, @cor, @altura, @largura, @modelo_alca, @foto, @quantidade)", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@modelo", modelo);
+                Banco.Comando.Parameters.AddWithValue("@silk", silk);
                 Banco.Comando.Parameters.AddWithValue("@cor", cor);
                 Banco.Comando.Parameters.AddWithValue("@altura", altura);
                 Banco.Comando.Parameters.AddWithValue("@largura", largura);
@@ -44,9 +46,10 @@ namespace ProductionSystem.Models
             try
             {
                 Banco.Conexao.Open();
-                Banco.Comando = new MySqlCommand("UPDATE estoque SET modelo = @modelo, cor = @cor, altura = @altura, largura = @largura, modelo_alca = @modelo_alca, foto = @foto, quantidade = @quantidade WHERE id = @id", Banco.Conexao);
+                Banco.Comando = new MySqlCommand("UPDATE estoque SET modelo = @modelo, silk = @silk, cor = @cor, altura = @altura, largura = @largura, modelo_alca = @modelo_alca, foto = @foto, quantidade = @quantidade WHERE id = @id", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@id", id);
                 Banco.Comando.Parameters.AddWithValue("@modelo", modelo);
+                Banco.Comando.Parameters.AddWithValue("@silk", silk);
                 Banco.Comando.Parameters.AddWithValue("@cor", cor);
                 Banco.Comando.Parameters.AddWithValue("@altura", altura);
                 Banco.Comando.Parameters.AddWithValue("@largura", largura);
