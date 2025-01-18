@@ -268,7 +268,7 @@ namespace ProductionSystem
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            es.Consultar();
+
         }
 
         private void txtCor_TextChanged(object sender, EventArgs e)
@@ -283,6 +283,11 @@ namespace ProductionSystem
                 modelo = txtPesquisa.Text
             };
             dgvEstoque.DataSource = es.Consultar();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            atualizarGrid();
         }
     }
 }

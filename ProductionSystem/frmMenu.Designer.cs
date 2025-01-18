@@ -31,6 +31,7 @@ namespace ProductionSystem
         {
             tabControl = new TabControl();
             tabEstoque = new TabPage();
+            btnAtualizar = new Button();
             btnPesquisa = new Button();
             dgvEstoque = new DataGridView();
             excluir = new DataGridViewImageColumn();
@@ -89,6 +90,7 @@ namespace ProductionSystem
             // 
             // tabEstoque
             // 
+            tabEstoque.Controls.Add(btnAtualizar);
             tabEstoque.Controls.Add(btnPesquisa);
             tabEstoque.Controls.Add(dgvEstoque);
             tabEstoque.Controls.Add(label1);
@@ -106,11 +108,22 @@ namespace ProductionSystem
             tabEstoque.Text = "Estoque";
             tabEstoque.UseVisualStyleBackColor = true;
             // 
+            // btnAtualizar
+            // 
+            btnAtualizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAtualizar.Image = Properties.Resources.Custom_Icon_Design_Mono_General_4_Refresh_24;
+            btnAtualizar.Location = new Point(598, 25);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(32, 34);
+            btnAtualizar.TabIndex = 4;
+            btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
+            // 
             // btnPesquisa
             // 
             btnPesquisa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnPesquisa.Image = Properties.Resources.Search;
-            btnPesquisa.Location = new Point(596, 22);
+            btnPesquisa.Location = new Point(549, 22);
             btnPesquisa.Name = "btnPesquisa";
             btnPesquisa.Size = new Size(43, 41);
             btnPesquisa.TabIndex = 3;
@@ -128,7 +141,7 @@ namespace ProductionSystem
             dgvEstoque.Name = "dgvEstoque";
             dgvEstoque.ReadOnly = true;
             dgvEstoque.Size = new Size(631, 455);
-            dgvEstoque.TabIndex = 9;
+            dgvEstoque.TabIndex = 10;
             dgvEstoque.CellClick += dgvEstoque_CellClick;
             dgvEstoque.CellContentClick += dgvEstoque_CellContentClick;
             dgvEstoque.CellFormatting += dgvEstoque_CellFormatting;
@@ -160,7 +173,7 @@ namespace ProductionSystem
             btnSalvar.Location = new Point(853, 522);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(98, 58);
-            btnSalvar.TabIndex = 6;
+            btnSalvar.TabIndex = 7;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
@@ -168,10 +181,10 @@ namespace ProductionSystem
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancelar.Location = new Point(752, 522);
+            btnCancelar.Location = new Point(753, 522);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(98, 58);
-            btnCancelar.TabIndex = 7;
+            btnCancelar.TabIndex = 8;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -181,7 +194,7 @@ namespace ProductionSystem
             txtPesquisa.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtPesquisa.Location = new Point(8, 29);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(584, 29);
+            txtPesquisa.Size = new Size(535, 29);
             txtPesquisa.TabIndex = 2;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
@@ -191,7 +204,7 @@ namespace ProductionSystem
             btnFechar.Location = new Point(7, 525);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(98, 58);
-            btnFechar.TabIndex = 8;
+            btnFechar.TabIndex = 9;
             btnFechar.Text = "Fechar";
             btnFechar.UseVisualStyleBackColor = true;
             btnFechar.Click += btnFechar_Click;
@@ -202,7 +215,7 @@ namespace ProductionSystem
             btnAdicionar.Location = new Point(853, 522);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(98, 58);
-            btnAdicionar.TabIndex = 5;
+            btnAdicionar.TabIndex = 6;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
             btnAdicionar.Click += btnAdicionar_Click;
@@ -233,7 +246,7 @@ namespace ProductionSystem
             grbEstoque.Location = new Point(647, 12);
             grbEstoque.Name = "grbEstoque";
             grbEstoque.Size = new Size(304, 507);
-            grbEstoque.TabIndex = 4;
+            grbEstoque.TabIndex = 5;
             grbEstoque.TabStop = false;
             // 
             // txtSilk
@@ -430,7 +443,8 @@ namespace ProductionSystem
             // 
             // picEstoque
             // 
-            picEstoque.Anchor = AnchorStyles.Top;
+            picEstoque.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            picEstoque.BorderStyle = BorderStyle.FixedSingle;
             picEstoque.Location = new Point(82, 40);
             picEstoque.Name = "picEstoque";
             picEstoque.Size = new Size(147, 146);
@@ -532,5 +546,6 @@ namespace ProductionSystem
         private TextBox txtSilk;
         private Label label10;
         private Button btnPesquisa;
+        private Button btnAtualizar;
     }
 }
