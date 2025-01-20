@@ -16,6 +16,7 @@ namespace ProductionSystem
             inicio();
             txtID.Enabled = false;
             dgvEstoque.Columns["id"].Visible = false;
+            dgvEstoque.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         public frmMenu()
