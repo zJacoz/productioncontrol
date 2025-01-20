@@ -176,7 +176,7 @@ namespace ProductionSystem
                 switch (coluna.Name)
                 {
                     case "modelo":
-                        coluna.Width = 140;
+                        coluna.Width = 180;
                         coluna.HeaderText = "Modelo";
                         break;
                     case "silk":
@@ -204,7 +204,7 @@ namespace ProductionSystem
                         coluna.HeaderText = "Quantidade";
                         break;
                     case "foto":
-                        coluna.Width = 385;
+                        coluna.Width = 340;
                         coluna.HeaderText = "Imagem";
                         break;
                     case "excluir":
