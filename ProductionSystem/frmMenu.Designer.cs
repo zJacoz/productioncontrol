@@ -29,6 +29,7 @@ namespace ProductionSystem
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tabControl = new TabControl();
             tabEstoque = new TabPage();
             btnAtualizar = new Button();
@@ -62,21 +63,32 @@ namespace ProductionSystem
             txtID = new TextBox();
             label2 = new Label();
             picEstoque = new PictureBox();
-            tabPage2 = new TabPage();
+            tabPedidos = new TabPage();
+            groupBox1 = new GroupBox();
+            comboBox1 = new ComboBox();
+            label12 = new Label();
+            txtCliente = new TextBox();
+            label11 = new Label();
             tabEstoqueTNT = new TabPage();
             tabRendimento = new TabPage();
+            estoqueBindingSource = new BindingSource(components);
             ofdEstoque = new OpenFileDialog();
+            bancoBindingSource = new BindingSource(components);
             tabControl.SuspendLayout();
             tabEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
             grbEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picEstoque).BeginInit();
+            tabPedidos.SuspendLayout();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)estoqueBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bancoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tabControl
             // 
             tabControl.Controls.Add(tabEstoque);
-            tabControl.Controls.Add(tabPage2);
+            tabControl.Controls.Add(tabPedidos);
             tabControl.Controls.Add(tabEstoqueTNT);
             tabControl.Controls.Add(tabRendimento);
             tabControl.Dock = DockStyle.Fill;
@@ -196,7 +208,6 @@ namespace ProductionSystem
             txtPesquisa.Name = "txtPesquisa";
             txtPesquisa.Size = new Size(535, 29);
             txtPesquisa.TabIndex = 2;
-            txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
             // btnFechar
             // 
@@ -386,7 +397,6 @@ namespace ProductionSystem
             txtCor.Name = "txtCor";
             txtCor.Size = new Size(102, 29);
             txtCor.TabIndex = 26;
-            txtCor.TextChanged += txtCor_TextChanged;
             // 
             // label4
             // 
@@ -404,12 +414,10 @@ namespace ProductionSystem
             cboModelo.Anchor = AnchorStyles.Right;
             cboModelo.DropDownStyle = ComboBoxStyle.DropDownList;
             cboModelo.FormattingEnabled = true;
-            cboModelo.Items.AddRange(new object[] { "Saco C/ Visor", "Saco S/ Visor", "Saquinho-Presente", "Fundo Falso" });
             cboModelo.Location = new Point(30, 271);
             cboModelo.Name = "cboModelo";
             cboModelo.Size = new Size(102, 29);
             cboModelo.TabIndex = 22;
-            cboModelo.SelectedIndexChanged += cboModelo_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -453,15 +461,64 @@ namespace ProductionSystem
             picEstoque.TabStop = false;
             picEstoque.Click += picEstoque_Click;
             // 
-            // tabPage2
+            // tabPedidos
             // 
-            tabPage2.Location = new Point(4, 30);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(959, 588);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Pedidos";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabPedidos.Controls.Add(groupBox1);
+            tabPedidos.Location = new Point(4, 30);
+            tabPedidos.Name = "tabPedidos";
+            tabPedidos.Padding = new Padding(3);
+            tabPedidos.Size = new Size(959, 588);
+            tabPedidos.TabIndex = 1;
+            tabPedidos.Text = "Pedidos";
+            tabPedidos.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(label12);
+            groupBox1.Controls.Add(txtCliente);
+            groupBox1.Controls.Add(label11);
+            groupBox1.Location = new Point(8, 6);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(447, 574);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Anchor = AnchorStyles.Right;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Saco C/ Visor", "Saco S/ Visor", "Saquinho-Presente", "Fundo Falso" });
+            comboBox1.Location = new Point(8, 104);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(166, 29);
+            comboBox1.TabIndex = 23;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(11, 80);
+            label12.Name = "label12";
+            label12.Size = new Size(66, 21);
+            label12.TabIndex = 2;
+            label12.Text = "Modelo:";
+            // 
+            // txtCliente
+            // 
+            txtCliente.Location = new Point(8, 49);
+            txtCliente.Name = "txtCliente";
+            txtCliente.Size = new Size(166, 29);
+            txtCliente.TabIndex = 1;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(11, 25);
+            label11.Name = "label11";
+            label11.Size = new Size(61, 21);
+            label11.TabIndex = 0;
+            label11.Text = "Cliente:";
             // 
             // tabEstoqueTNT
             // 
@@ -483,9 +540,17 @@ namespace ProductionSystem
             tabRendimento.Text = "Rendimento";
             tabRendimento.UseVisualStyleBackColor = true;
             // 
+            // estoqueBindingSource
+            // 
+            estoqueBindingSource.DataSource = typeof(Models.Estoque);
+            // 
             // ofdEstoque
             // 
             ofdEstoque.FileName = "openFileDialog1";
+            // 
+            // bancoBindingSource
+            // 
+            bancoBindingSource.DataSource = typeof(Banco);
             // 
             // frmMenu
             // 
@@ -505,6 +570,11 @@ namespace ProductionSystem
             grbEstoque.ResumeLayout(false);
             grbEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picEstoque).EndInit();
+            tabPedidos.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)estoqueBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bancoBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -512,7 +582,7 @@ namespace ProductionSystem
 
         private TabControl tabControl;
         private TabPage tabEstoque;
-        private TabPage tabPage2;
+        private TabPage tabPedidos;
         private TabPage tabEstoqueTNT;
         private TabPage tabRendimento;
         private GroupBox grbEstoque;
@@ -547,5 +617,12 @@ namespace ProductionSystem
         private Label label10;
         private Button btnPesquisa;
         private Button btnAtualizar;
+        private GroupBox groupBox1;
+        private Label label11;
+        private TextBox txtCliente;
+        private Label label12;
+        private ComboBox comboBox1;
+        private BindingSource estoqueBindingSource;
+        private BindingSource bancoBindingSource;
     }
 }

@@ -15,8 +15,8 @@ namespace ProductionSystem
             Banco.CriarBanco();
             inicio();
             txtID.Enabled = false;
-            dgvEstoque.Columns["id"].Visible = false;
             dgvEstoque.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         public frmMenu()
@@ -26,6 +26,7 @@ namespace ProductionSystem
 
         void inicio()
         {
+
             cboModelo.Enabled = false;
             txtSilk.Enabled = false;
             txtCor.Enabled = false;
@@ -82,6 +83,29 @@ namespace ProductionSystem
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+
+            string vqueryModelos = @"
+                SELECT 
+                    id,
+                    modelo
+                FROM modelos
+                ORDER BY
+                id";
+            cboModelo.DataSource = Banco.dql(vqueryModelos);
+            cboModelo.DisplayMember = "modelo";
+            cboModelo.ValueMember = "id";
+
+            string vqueryAlcas = @"
+                SELECT 
+                    id,
+                    modelo
+                FROM alcas
+                ORDER BY
+                id";
+            cboAlca.DataSource = Banco.dql(vqueryAlcas);
+            cboAlca.DisplayMember = "modelo";
+            cboAlca.ValueMember = "id";
+
             cboModelo.Enabled = true;
             txtSilk.Enabled = true;
             txtCor.Enabled = true;
@@ -127,11 +151,6 @@ namespace ProductionSystem
                 es.Adicionar();
                 inicio();
             }
-
-        }
-
-        private void cboModelo_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -267,28 +286,19 @@ namespace ProductionSystem
             Close();
         }
 
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCor_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPesquisa_Click(object sender, EventArgs e)
         {
-            es = new Estoque()
-            {
-                modelo = txtPesquisa.Text
-            };
-            dgvEstoque.DataSource = es.Consultar();
+            carregarGrid("");
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             atualizarGrid();
         }
+
+
+        // TABELA PEDIDOS >>>>>>
+
+
     }
 }

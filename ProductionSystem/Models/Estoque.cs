@@ -102,7 +102,7 @@ namespace ProductionSystem.Models
         {
             try
             {
-                Banco.Comando = new MySqlCommand("SELECT * FROM estoque WHERE modelo LIKE @modelo " +
+                Banco.Comando = new MySqlCommand("SELECT * FROM estoque WHERE modelo = '@modelo' " +
                 "ORDER BY modelo", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@modelo", modelo + "%");
                 Banco.Adaptador = new MySqlDataAdapter(Banco.Comando);
