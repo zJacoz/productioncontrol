@@ -16,6 +16,7 @@ namespace ProductionSystem.Models
         public string modelo_alca { get; set; }
         public string foto { get; set; }
         public string quantidade { get; set; }
+        public string gramatura { get; set; }
 
         public void Adicionar()
         {
@@ -102,9 +103,13 @@ namespace ProductionSystem.Models
         {
             try
             {
-                Banco.Comando = new MySqlCommand("SELECT * FROM estoque WHERE modelo = '@modelo' " +
+                Banco.Comando = new MySqlCommand("SELECT * FROM estoque WHERE modelo like @modelo " +
+                    "OR altura like @altura " +
+                    "OR largura like @largura " +
                 "ORDER BY modelo", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@modelo", modelo + "%");
+                Banco.Comando.Parameters.AddWithValue("@altura", altura + "%");
+                Banco.Comando.Parameters.AddWithValue("@largura", largura + "%");
                 Banco.Adaptador = new MySqlDataAdapter(Banco.Comando);
                 Banco.dataTable = new DataTable();
                 Banco.Adaptador.Fill(Banco.dataTable);

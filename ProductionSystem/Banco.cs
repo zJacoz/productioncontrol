@@ -71,6 +71,7 @@ namespace ProductionSystem
                     "altura char(03), " +
                     "largura char(03), " +
                     "modelo_alca char(20), " +
+                    "gramatura char(03), " +
                     "quantidade char(08), " +
                     "foto varchar(100))", Conexao);
                 Comando.ExecuteNonQuery();
