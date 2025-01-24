@@ -65,7 +65,7 @@ namespace ProductionSystem
             picEstoque = new PictureBox();
             tabPedidos = new TabPage();
             groupBox1 = new GroupBox();
-            comboBox1 = new ComboBox();
+            cboModeloP = new ComboBox();
             label12 = new Label();
             txtCliente = new TextBox();
             label11 = new Label();
@@ -74,6 +74,18 @@ namespace ProductionSystem
             estoqueBindingSource = new BindingSource(components);
             ofdEstoque = new OpenFileDialog();
             bancoBindingSource = new BindingSource(components);
+            cboAlcaP = new ComboBox();
+            label13 = new Label();
+            cboGramat = new ComboBox();
+            label14 = new Label();
+            textBox1 = new TextBox();
+            label15 = new Label();
+            label16 = new Label();
+            textBox2 = new TextBox();
+            label17 = new Label();
+            textBox3 = new TextBox();
+            label18 = new Label();
+            label19 = new Label();
             tabControl.SuspendLayout();
             tabEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
@@ -474,7 +486,19 @@ namespace ProductionSystem
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(label19);
+            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(label18);
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(label17);
+            groupBox1.Controls.Add(label16);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(label15);
+            groupBox1.Controls.Add(cboGramat);
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(cboAlcaP);
+            groupBox1.Controls.Add(label13);
+            groupBox1.Controls.Add(cboModeloP);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(txtCliente);
             groupBox1.Controls.Add(label11);
@@ -484,16 +508,16 @@ namespace ProductionSystem
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
-            // comboBox1
+            // cboModeloP
             // 
-            comboBox1.Anchor = AnchorStyles.Right;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Saco C/ Visor", "Saco S/ Visor", "Saquinho-Presente", "Fundo Falso" });
-            comboBox1.Location = new Point(8, 104);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(166, 29);
-            comboBox1.TabIndex = 23;
+            cboModeloP.Anchor = AnchorStyles.Right;
+            cboModeloP.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboModeloP.FormattingEnabled = true;
+            cboModeloP.Items.AddRange(new object[] { "Saco C/ Visor", "Saco S/ Visor", "Saquinho-Presente", "Fundo Falso" });
+            cboModeloP.Location = new Point(8, 104);
+            cboModeloP.Name = "cboModeloP";
+            cboModeloP.Size = new Size(125, 29);
+            cboModeloP.TabIndex = 23;
             // 
             // label12
             // 
@@ -551,6 +575,112 @@ namespace ProductionSystem
             // bancoBindingSource
             // 
             bancoBindingSource.DataSource = typeof(Banco);
+            // 
+            // cboAlcaP
+            // 
+            cboAlcaP.Anchor = AnchorStyles.Right;
+            cboAlcaP.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboAlcaP.FormattingEnabled = true;
+            cboAlcaP.Items.AddRange(new object[] { "Saco C/ Visor", "Saco S/ Visor", "Saquinho-Presente", "Fundo Falso" });
+            cboAlcaP.Location = new Point(148, 104);
+            cboAlcaP.Name = "cboAlcaP";
+            cboAlcaP.Size = new Size(125, 29);
+            cboAlcaP.TabIndex = 25;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(151, 80);
+            label13.Name = "label13";
+            label13.Size = new Size(42, 21);
+            label13.TabIndex = 24;
+            label13.Text = "Alça:";
+            // 
+            // cboGramat
+            // 
+            cboGramat.Anchor = AnchorStyles.Right;
+            cboGramat.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboGramat.FormattingEnabled = true;
+            cboGramat.Items.AddRange(new object[] { "Saco C/ Visor", "Saco S/ Visor", "Saquinho-Presente", "Fundo Falso" });
+            cboGramat.Location = new Point(282, 104);
+            cboGramat.Name = "cboGramat";
+            cboGramat.Size = new Size(88, 29);
+            cboGramat.TabIndex = 27;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(282, 80);
+            label14.Name = "label14";
+            label14.Size = new Size(88, 21);
+            label14.TabIndex = 26;
+            label14.Text = "Gramatura:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(8, 159);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(77, 29);
+            textBox1.TabIndex = 29;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(11, 135);
+            label15.Name = "label15";
+            label15.Size = new Size(38, 21);
+            label15.TabIndex = 28;
+            label15.Text = "Cor:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(186, 163);
+            label16.Name = "label16";
+            label16.Size = new Size(19, 21);
+            label16.TabIndex = 30;
+            label16.Text = "X";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(106, 159);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(77, 29);
+            textBox2.TabIndex = 32;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(109, 135);
+            label17.Name = "label17";
+            label17.Size = new Size(55, 21);
+            label17.TabIndex = 31;
+            label17.Text = "Altura:";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(205, 160);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(77, 29);
+            textBox3.TabIndex = 34;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(208, 136);
+            label18.Name = "label18";
+            label18.Size = new Size(67, 21);
+            label18.TabIndex = 33;
+            label18.Text = "Largura:";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(11, 204);
+            label19.Name = "label19";
+            label19.Size = new Size(38, 21);
+            label19.TabIndex = 35;
+            label19.Text = "Silk:";
             // 
             // frmMenu
             // 
@@ -621,8 +751,20 @@ namespace ProductionSystem
         private Label label11;
         private TextBox txtCliente;
         private Label label12;
-        private ComboBox comboBox1;
+        private ComboBox cboModeloP;
         private BindingSource estoqueBindingSource;
         private BindingSource bancoBindingSource;
+        private ComboBox cboAlcaP;
+        private Label label13;
+        private Label label16;
+        private TextBox textBox1;
+        private Label label15;
+        private ComboBox cboGramat;
+        private Label label14;
+        private Label label19;
+        private TextBox textBox3;
+        private Label label18;
+        private TextBox textBox2;
+        private Label label17;
     }
 }
