@@ -29,6 +29,7 @@ namespace ProductionSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             label1 = new Label();
             btnCancelar = new Button();
             btnFechar = new Button();
@@ -59,9 +60,9 @@ namespace ProductionSystem
             txtPesquisa = new TextBox();
             btnAdicionar = new Button();
             grbEstoque = new GroupBox();
-            ofdEstoque = new OpenFileDialog();
-            label11 = new Label();
             txtGrama = new TextBox();
+            label11 = new Label();
+            ofdEstoque = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)picEstoque).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
             grbEstoque.SuspendLayout();
@@ -80,22 +81,28 @@ namespace ProductionSystem
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancelar.Image = Properties.Resources.failed_4476475;
             btnCancelar.Location = new Point(850, 538);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(98, 58);
             btnCancelar.TabIndex = 18;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.TextAlign = ContentAlignment.BottomCenter;
+            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click_1;
             // 
             // btnFechar
             // 
             btnFechar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnFechar.Image = Properties.Resources.ad_blocker;
             btnFechar.Location = new Point(9, 536);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(98, 58);
             btnFechar.TabIndex = 19;
             btnFechar.Text = "Fechar";
+            btnFechar.TextAlign = ContentAlignment.BottomCenter;
+            btnFechar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnFechar.UseVisualStyleBackColor = true;
             btnFechar.Click += btnFechar_Click_1;
             // 
@@ -341,11 +348,14 @@ namespace ProductionSystem
             // btnSalvar
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSalvar.Image = Properties.Resources.floppy_disk_4408708;
             btnSalvar.Location = new Point(954, 538);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(98, 58);
             btnSalvar.TabIndex = 17;
             btnSalvar.Text = "Salvar";
+            btnSalvar.TextAlign = ContentAlignment.BottomCenter;
+            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click_1;
             // 
@@ -361,11 +371,14 @@ namespace ProductionSystem
             // btnAdicionar
             // 
             btnAdicionar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAdicionar.Image = Properties.Resources.folder_8892160;
             btnAdicionar.Location = new Point(954, 538);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(98, 58);
             btnAdicionar.TabIndex = 16;
             btnAdicionar.Text = "Adicionar";
+            btnAdicionar.TextAlign = ContentAlignment.BottomCenter;
+            btnAdicionar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnAdicionar.UseVisualStyleBackColor = true;
             btnAdicionar.Click += btnAdicionar_Click_1;
             // 
@@ -400,9 +413,13 @@ namespace ProductionSystem
             grbEstoque.TabIndex = 15;
             grbEstoque.TabStop = false;
             // 
-            // ofdEstoque
+            // txtGrama
             // 
-            ofdEstoque.FileName = "openFileDialog1";
+            txtGrama.Anchor = AnchorStyles.Left;
+            txtGrama.Location = new Point(136, 434);
+            txtGrama.Name = "txtGrama";
+            txtGrama.Size = new Size(73, 23);
+            txtGrama.TabIndex = 39;
             // 
             // label11
             // 
@@ -415,13 +432,9 @@ namespace ProductionSystem
             label11.TabIndex = 38;
             label11.Text = "Gramatura:";
             // 
-            // txtGrama
+            // ofdEstoque
             // 
-            txtGrama.Anchor = AnchorStyles.Left;
-            txtGrama.Location = new Point(136, 434);
-            txtGrama.Name = "txtGrama";
-            txtGrama.Size = new Size(73, 23);
-            txtGrama.TabIndex = 39;
+            ofdEstoque.FileName = "openFileDialog1";
             // 
             // frmMenu
             // 
@@ -438,8 +451,9 @@ namespace ProductionSystem
             Controls.Add(btnAdicionar);
             Controls.Add(grbEstoque);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmMenu";
-            Text = "Controle de Produção";
+            Text = "Controle de Estoque";
             WindowState = FormWindowState.Maximized;
             Load += frmMenu_Load;
             ((System.ComponentModel.ISupportInitialize)picEstoque).EndInit();

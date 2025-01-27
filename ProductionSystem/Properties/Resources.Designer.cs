@@ -63,6 +63,16 @@ namespace ProductionSystem.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ad_blocker {
+            get {
+                object obj = ResourceManager.GetObject("ad-blocker", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Custom_Icon_Design_Mono_General_4_Refresh_24 {
             get {
                 object obj = ResourceManager.GetObject("Custom-Icon-Design-Mono-General-4-Refresh.24", resourceCulture);
@@ -76,6 +86,36 @@ namespace ProductionSystem.Properties {
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap failed_4476475 {
+            get {
+                object obj = ResourceManager.GetObject("failed_4476475", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap floppy_disk_4408708 {
+            get {
+                object obj = ResourceManager.GetObject("floppy-disk_4408708", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_8892160 {
+            get {
+                object obj = ResourceManager.GetObject("folder_8892160", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

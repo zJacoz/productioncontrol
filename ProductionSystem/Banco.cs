@@ -16,7 +16,7 @@ namespace ProductionSystem
         {
             try
             {
-                Conexao = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=");
+                Conexao = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=!Jaco*998445!");
                 Conexao.Open();
             }
             catch (Exception e)

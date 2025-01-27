@@ -238,15 +238,15 @@ namespace ProductionSystem
                         coluna.HeaderText = "Alça";
                         break;
                     case "gramatura":
-                        coluna.Width = 50;
-                        coluna.HeaderText = "Grama";
+                        coluna.Width = 70;
+                        coluna.HeaderText = "Gramatura";
                         break;
                     case "quantidade":
-                        coluna.Width = 130;
+                        coluna.Width = 135;
                         coluna.HeaderText = "Quantidade";
                         break;
                     case "foto":
-                        coluna.Width = 271;
+                        coluna.Width = 246;
                         coluna.HeaderText = "Imagem";
                         break;
                     case "excluir":
