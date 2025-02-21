@@ -61,8 +61,17 @@ namespace ProductionSystem.Views
 
             if (txtDec.Text != "")
             {
-                total = Convert.ToDouble(this.Valor) - Convert.ToDouble(txtDec.Text);
-                lblQtde.Text = total.ToString();
+                if(Convert.ToDouble(txtDec.Text) > Convert.ToDouble(this.Valor))
+                {
+                    MessageBox.Show("Quantidade a ser retirada maior que a quantidade em estoque.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtDec.Text = "";
+                    return;
+                } else
+                {
+                    total = Convert.ToDouble(this.Valor) - Convert.ToDouble(txtDec.Text);
+                    lblQtde.Text = total.ToString();
+                }
+                
             }
         }
 

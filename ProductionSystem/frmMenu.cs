@@ -18,7 +18,18 @@ namespace ProductionSystem
             dgvEstoque.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             carregarGrid("");
             limpaControles();
+            atualizaModelos();
+            atualizaAlcas();
+        }
 
+        public frmMenu()
+        {
+            InitializeComponent();
+
+        }
+
+        public void atualizaModelos()
+        {
             string vqueryModelos = @"
                 SELECT 
                     id,
@@ -31,7 +42,10 @@ namespace ProductionSystem
             cboModelo.DisplayMember = "modelo";
             cboModelo.ValueMember = "id";
             cboModelo.SelectedIndex = -1;
+        }
 
+        public void atualizaAlcas()
+        {
             string vqueryAlcas = @"
                 SELECT 
                     id,
@@ -46,16 +60,11 @@ namespace ProductionSystem
             cboAlca.SelectedIndex = -1;
         }
 
-        public frmMenu()
-        {
-            InitializeComponent();
-
-        }
-
         void inicio()
         {
             cboModelo.Enabled = false;
             txtSilk.Enabled = false;
+            txtCorAlca.Enabled = false;
             txtCor.Enabled = false;
             cboAlca.Enabled = false;
             txtAltura.Enabled = false;
@@ -104,7 +113,8 @@ namespace ProductionSystem
             {
                 modelo = pesquisa,
                 altura = pesquisa,
-                largura = pesquisa
+                largura = pesquisa,
+                silk = pesquisa
             };
             dgvEstoque.DataSource = es.Consultar();
             inicio();
@@ -119,9 +129,10 @@ namespace ProductionSystem
 
         private void btnAdicionar_Click_1(object sender, EventArgs e)
         {
-            
+
             grbEstoque.Enabled = true;
             cboModelo.Enabled = true;
+            txtCorAlca.Enabled = true;
             txtSilk.Enabled = true;
             txtCor.Enabled = true;
             cboAlca.Enabled = true;
@@ -136,6 +147,7 @@ namespace ProductionSystem
             btnIncremento.Visible = false;
             btnDecremento.Visible = false;
             limpaControles();
+            txtGrama.Text = "40";
         }
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
@@ -163,13 +175,19 @@ namespace ProductionSystem
                     altura = txtAltura.Text,
                     largura = txtLargura.Text,
                     modelo_alca = cboAlca.Text,
+                    cor_alca = txtCorAlca.Text,
                     gramatura = txtGrama.Text,
                     foto = picEstoque.ImageLocation,
                     quantidade = txtQuantidade.Text
                 };
                 es.Adicionar();
-                inicio();
             }
+            inicio();
+            limpaControles();
+            atualizarGrid();
+
+            MessageBox.Show("Estoque adicionado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             btnIncremento.Visible = true;
             btnDecremento.Visible = true;
         }
@@ -204,6 +222,7 @@ namespace ProductionSystem
             dgvEstoque.Columns["silk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["cor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["modelo_alca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvEstoque.Columns["cor_alca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["altura"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["largura"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvEstoque.Columns["gramatura"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -237,6 +256,10 @@ namespace ProductionSystem
                         coluna.Width = 100;
                         coluna.HeaderText = "Alça";
                         break;
+                    case "cor_alca":
+                        coluna.Width = 100;
+                        coluna.HeaderText = "Cor da Alça";
+                        break;
                     case "gramatura":
                         coluna.Width = 70;
                         coluna.HeaderText = "Gramatura";
@@ -246,12 +269,12 @@ namespace ProductionSystem
                         coluna.HeaderText = "Quantidade";
                         break;
                     case "foto":
-                        coluna.Width = 246;
+                        coluna.Width = 146;
                         coluna.HeaderText = "Imagem";
                         break;
                     case "excluir":
                         coluna.Width = 60;
-                        coluna.DisplayIndex = 10;
+                        coluna.DisplayIndex = 11;
                         coluna.HeaderText = "Excluir";
                         break;
                     default:
@@ -296,7 +319,7 @@ namespace ProductionSystem
                     es.Excluir();
 
                     limpaControles();
-                    dgvEstoque.Refresh();
+                    atualizarGrid();
                 }
             }
         }
@@ -318,7 +341,7 @@ namespace ProductionSystem
         {
             txtPesquisa.Text = string.Format(txtPesquisa.Text);
 
-            if(txtPesquisa.Text != "")
+            if (txtPesquisa.Text != "")
             {
                 carregarGrid(txtPesquisa.Text);
             }
@@ -326,6 +349,18 @@ namespace ProductionSystem
             {
                 carregarGrid("");
             }
+        }
+
+        private void btnAddAlca_Click(object sender, EventArgs e)
+        {
+            frmAddAlca form = new frmAddAlca();
+            form.Show();
+        }
+
+        private void btnAddMod_Click(object sender, EventArgs e)
+        {
+            frmAddMod form = new frmAddMod();
+            form.Show();
         }
 
 

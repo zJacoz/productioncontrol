@@ -16,7 +16,11 @@ namespace ProductionSystem
         {
             try
             {
-                Conexao = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=!Jaco*998445!");
+                Conexao = new MySqlConnection("server= srv1886.hstgr.io;" +
+                "user id=u441336742_Jaco;" +
+                "password=!Jaco*998445!;" +
+                "database=u441336742_jsilks;" + 
+                "persistsecurityinfo=False");
                 Conexao.Open();
             }
             catch (Exception e)
@@ -42,26 +46,26 @@ namespace ProductionSystem
             try
             {
                 AbrirConexao();
-                Comando = new MySqlCommand("CREATE DATABASE IF NOT EXISTS producao; USE producao", Conexao);
+                Comando = new MySqlCommand("CREATE DATABASE IF NOT EXISTS u441336742_jsilks; USE u441336742_jsilks", Conexao);
                 Comando.ExecuteNonQuery();
 
-                Comando = new MySqlCommand("CREATE TEMPORARY TABLE modelos " +
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS modelos " +
                     "(id integer auto_increment primary key, " +
                     "modelo char(20))", Conexao);
                 Comando.ExecuteNonQuery();
 
-                Comando = new MySqlCommand("INSERT INTO modelos (modelo) VALUES ('Sacola TNT'), ('Saco C/ Visor'), " +
-                    "('Saco Fundo Falso'), ('Saquinho-Presente')", Conexao);
-                Comando.ExecuteNonQuery();
+                //Comando = new MySqlCommand("INSERT INTO modelos (modelo) VALUES ('Sacola TNT'), ('Saco C/ Visor'), " +
+                //    "('Saco Fundo Falso'), ('Saquinho-Presente')", Conexao);
+                //Comando.ExecuteNonQuery();
 
-                Comando = new MySqlCommand("CREATE TEMPORARY TABLE alcas " +
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS alcas " +
                     "(id integer auto_increment primary key, " +
                     "modelo char(20))", Conexao);
                 Comando.ExecuteNonQuery();
 
-                Comando = new MySqlCommand("INSERT INTO alcas (modelo) VALUES ('Sem alça'), ('Alça'), " +
-                    "('Cordão')", Conexao);
-                Comando.ExecuteNonQuery();
+                //Comando = new MySqlCommand("INSERT INTO alcas (modelo) VALUES ('Sem alça'), ('Alça'), " +
+                //    "('Cordão')", Conexao);
+                //Comando.ExecuteNonQuery();
 
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS estoque " +
                     "(id integer auto_increment primary key,    " +
@@ -71,6 +75,7 @@ namespace ProductionSystem
                     "altura char(03), " +
                     "largura char(03), " +
                     "modelo_alca char(20), " +
+                    "cor_alca char(20), " +
                     "gramatura char(03), " +
                     "quantidade char(08), " +
                     "foto varchar(100))", Conexao);
