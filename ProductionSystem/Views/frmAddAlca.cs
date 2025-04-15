@@ -61,7 +61,7 @@ namespace ProductionSystem.Views
                 es.AdicionarAlca();
                 atualizarGrid();
                 txtAddAlca.Clear();
-                me.atualizaAlcas();
+                me.carregarGrid("");
 
                 MessageBox.Show("Modelo de alça adicionado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -113,7 +113,6 @@ namespace ProductionSystem.Views
                         id_alca = Convert.ToInt32(dgvAlca.CurrentRow.Cells["id"].Value.ToString())
                     };
                     es.ExcluirAlca();
-
                     atualizarGrid();
                 }
             }

@@ -16,11 +16,7 @@ namespace ProductionSystem
         {
             try
             {
-                Conexao = new MySqlConnection("server= srv1886.hstgr.io;" +
-                "user id=u441336742_Jaco;" +
-                "password=!Jaco*998445!;" +
-                "database=u441336742_jsilks;" + 
-                "persistsecurityinfo=False");
+                Conexao = new MySqlConnection("server=localhost;port=3307;uid=root;pwd=");
                 Conexao.Open();
             }
             catch (Exception e)
@@ -46,7 +42,7 @@ namespace ProductionSystem
             try
             {
                 AbrirConexao();
-                Comando = new MySqlCommand("CREATE DATABASE IF NOT EXISTS u441336742_jsilks; USE u441336742_jsilks", Conexao);
+                Comando = new MySqlCommand("CREATE DATABASE IF NOT EXISTS estoque; USE estoque", Conexao);
                 Comando.ExecuteNonQuery();
 
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS modelos " +
