@@ -465,10 +465,13 @@ namespace ProductionSystem
             // 
             btnAddMod.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAddMod.Image = Properties.Resources.add_to_cart;
-            btnAddMod.Location = new Point(1020, 25);
+            btnAddMod.ImageAlign = ContentAlignment.MiddleRight;
+            btnAddMod.Location = new Point(959, 17);
             btnAddMod.Name = "btnAddMod";
-            btnAddMod.Size = new Size(32, 34);
+            btnAddMod.Size = new Size(93, 47);
             btnAddMod.TabIndex = 15;
+            btnAddMod.Text = "Adicionar modelo";
+            btnAddMod.TextAlign = ContentAlignment.MiddleLeft;
             btnAddMod.UseVisualStyleBackColor = true;
             btnAddMod.Click += btnAddMod_Click;
             // 
@@ -476,10 +479,13 @@ namespace ProductionSystem
             // 
             btnAddAlca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAddAlca.Image = Properties.Resources.add;
-            btnAddAlca.Location = new Point(982, 25);
+            btnAddAlca.ImageAlign = ContentAlignment.TopCenter;
+            btnAddAlca.Location = new Point(867, 17);
             btnAddAlca.Name = "btnAddAlca";
-            btnAddAlca.Size = new Size(32, 34);
+            btnAddAlca.Size = new Size(88, 47);
             btnAddAlca.TabIndex = 14;
+            btnAddAlca.Text = "Adicionar alça";
+            btnAddAlca.TextAlign = ContentAlignment.MiddleLeft;
             btnAddAlca.UseVisualStyleBackColor = true;
             btnAddAlca.Click += btnAddAlca_Click;
             // 
