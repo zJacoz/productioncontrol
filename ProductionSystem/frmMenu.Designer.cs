@@ -30,7 +30,6 @@ namespace ProductionSystem
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
-            label1 = new Label();
             btnCancelar = new Button();
             btnFechar = new Button();
             txtSilk = new TextBox();
@@ -65,22 +64,13 @@ namespace ProductionSystem
             txtGrama = new TextBox();
             label11 = new Label();
             ofdEstoque = new OpenFileDialog();
+            label1 = new Label();
             btnAddMod = new Button();
             btnAddAlca = new Button();
             ((System.ComponentModel.ISupportInitialize)picEstoque).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
             grbEstoque.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(123, 19);
-            label1.TabIndex = 11;
-            label1.Text = "Pesquisar produto:";
             // 
             // btnCancelar
             // 
@@ -461,17 +451,24 @@ namespace ProductionSystem
             // 
             ofdEstoque.FileName = "openFileDialog1";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(123, 19);
+            label1.TabIndex = 11;
+            label1.Text = "Pesquisar produto:";
+            // 
             // btnAddMod
             // 
             btnAddMod.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAddMod.Image = Properties.Resources.add_to_cart;
-            btnAddMod.ImageAlign = ContentAlignment.MiddleRight;
-            btnAddMod.Location = new Point(959, 17);
+            btnAddMod.Location = new Point(1020, 25);
             btnAddMod.Name = "btnAddMod";
-            btnAddMod.Size = new Size(93, 47);
+            btnAddMod.Size = new Size(32, 34);
             btnAddMod.TabIndex = 15;
-            btnAddMod.Text = "Adicionar modelo";
-            btnAddMod.TextAlign = ContentAlignment.MiddleLeft;
             btnAddMod.UseVisualStyleBackColor = true;
             btnAddMod.Click += btnAddMod_Click;
             // 
@@ -479,13 +476,10 @@ namespace ProductionSystem
             // 
             btnAddAlca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAddAlca.Image = Properties.Resources.add;
-            btnAddAlca.ImageAlign = ContentAlignment.TopCenter;
-            btnAddAlca.Location = new Point(867, 17);
+            btnAddAlca.Location = new Point(982, 25);
             btnAddAlca.Name = "btnAddAlca";
-            btnAddAlca.Size = new Size(88, 47);
+            btnAddAlca.Size = new Size(32, 34);
             btnAddAlca.TabIndex = 14;
-            btnAddAlca.Text = "Adicionar alça";
-            btnAddAlca.TextAlign = ContentAlignment.MiddleLeft;
             btnAddAlca.UseVisualStyleBackColor = true;
             btnAddAlca.Click += btnAddAlca_Click;
             // 
@@ -520,8 +514,6 @@ namespace ProductionSystem
         }
 
         #endregion
-
-        private Label label1;
         private Button btnCancelar;
         private Button btnFechar;
         private TextBox txtSilk;
@@ -553,10 +545,11 @@ namespace ProductionSystem
         private OpenFileDialog ofdEstoque;
         private TextBox txtGrama;
         private Label label11;
-        private Button btnAddMod;
-        private Button btnAddAlca;
         private TextBox txtCorAlca;
         private Label label12;
         private TextBox txtID;
+        private Label label1;
+        private Button btnAddMod;
+        private Button btnAddAlca;
     }
 }
